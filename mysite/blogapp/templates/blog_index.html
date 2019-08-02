@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>Blog Index</h1>
+    <hr>
+    {% for post in posts %}
+    <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title_text }}</a></h2>
+    <small>
+        {{ post.date_created.date }} |&nbsp;
+        Authors:&nbsp;
+        {% for author in authors.post.all %}
+        <a href="{% url 'blog_author' author.author_name %}">
+            {{ author.author_name }}
+        </a>&nbsp;
+        {% endfor %}
+    </small>
+    <p>{{ post.description_text | slice:":400" }}...</p>
+    {% endfor %}
+</div>
+{% endblock %}
