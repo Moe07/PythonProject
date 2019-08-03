@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block page_content %}
 <div class="col-md-8 offset-md-2">
-  <h1>Home</h1>
+  <h1 class="text-dark">Home</h1>
   <hr>
   {% for post in posts %}
   <h2 class="text-primary">{{ post.title_text }}</h2>
@@ -10,7 +10,7 @@
   Author:&nbsp;
   {{ post.author.author_name}}
   </small>
-  <p>{{ post.description_text | slice:":200" }}...</p>
+  <p>{{ post.description_text | slice:":20" }}...</p>
   <a class="btn btn-outline-primary" href="{% url 'blog_detail' post.pk%}">View Details</a>
   {% endfor %}
 </div>

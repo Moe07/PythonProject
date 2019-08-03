@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from blogapp.models import Post, Author
 from django.utils import timezone
+from django.shortcuts import redirect
 
 
 def blog_index(request):
@@ -23,8 +24,6 @@ def blog_detail(request, pk):
 
 
 def add_post_form_submission(request):
-    print("Hello form is submitted")
-    
     name = request.POST["name"]
     bio = request.POST["bio"]
     title = request.POST["title"]
@@ -35,11 +34,8 @@ def add_post_form_submission(request):
     post = Post(title_text=title,description_text=description,date_created=timezone.now(),author=a)
     post.save()
 
-    posts = Post.objects.all().order_by('-date_created') 
-    context = {
-        "posts": posts,
-    }
-    return render(request, "blog_index.html", context)
+    response = redirect('/blogapp/')
+    return response
                   
 
 def edit_post(request,pk):
@@ -67,11 +63,8 @@ def edit_post_form_submission(request,pk):
     post.author=a
     post.save()
     
-    posts = Post.objects.all().order_by('-date_created') 
-    context = {
-        "posts": posts,
-    }
-    return render(request, "blog_index.html", context)
+    response = redirect('/blogapp/')
+    return response
 
 
     
