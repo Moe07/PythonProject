@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>{{ post.title_text }}</h1>
+    <small>
+        {{ post.date_created.date }} |&nbsp;
+        Authors:&nbsp;
+           {{ post.author.author_name}}
+    </small>
+    <p>{{ post.description_text | linebreaks }}</p>
+    <hr>
+</div>
+{% endblock %}
