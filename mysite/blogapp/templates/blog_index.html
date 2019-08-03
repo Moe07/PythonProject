@@ -14,4 +14,44 @@
   <a class="btn btn-outline-primary" href="{% url 'blog_detail' post.pk%}">View Details</a>
   {% endfor %}
 </div>
+<!-- Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postModalLabel">Create Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="postForm" method="post" action="/blogapp/add_post_form_submission/">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="name">Author Name</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="bio">Author Bio</label>
+            <input name="bio" type="text" class="form-control" id="bio" placeholder="Bio">
+          </div>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input name="title" type="text" class="form-control" id="title" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" form="postForm" placeholder="Enter text here..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="col-md-8 offset-md-2" style="padding-top:20px;">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postModal">
+  Create New Post
+  </button>
+</footer>
 {% endblock %}

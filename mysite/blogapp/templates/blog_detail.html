@@ -15,5 +15,6 @@
   </div>
   <p>{{ post.description_text | linebreaks }}</p>
   <hr>
-</div>
+  <a class="btn btn-primary" href="{% url 'edit_post' post.pk%}">Edit Post</a>
+</div> 
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block page_content %}
 <div class="col-md-8 offset-md-2">
-<form method="post" action="/blogapp/add_post_form_submission/">
+<form method="post" action="{% url 'edit_post_form_submission' post.pk%}">
 	{% csrf_token %}
   <div class="form-group">
     <label for="name">Author Name</label>
