@@ -25,7 +25,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="postForm" method="post" action="/blogapp/add_post_form_submission/">
+        <form id="postForm" method="post" action="{% url 'add_post' %}">
           {% csrf_token %}
           <div class="form-group">
             <label for="name">Author Name</label>
@@ -49,6 +49,7 @@
     </div>
   </div>
 </div>
+<!-- Footer Button -->
 <footer class="col-md-8 offset-md-2" style="padding-top:20px;">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postModal">
   Create New Post

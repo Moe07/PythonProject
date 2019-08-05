@@ -23,7 +23,7 @@ def blog_detail(request, pk):
     return render(request, "blog_detail.html", context)
 
 
-def add_post_form_submission(request):
+def add_post(request):
     name = request.POST["name"]
     bio = request.POST["bio"]
     title = request.POST["title"]
@@ -37,17 +37,7 @@ def add_post_form_submission(request):
     response = redirect('/blogapp/')
     return response
                   
-
 def edit_post(request,pk):
-    post = Post.objects.get(pk=pk)
-    authors = Author.objects.filter(post=post)
-    context = {
-        "post": post,
-        "authors": authors,
-    }
-    return render(request, "edit_post.html", context)
-
-def edit_post_form_submission(request,pk):
     
     post = Post.objects.get(pk=pk)
     name = request.POST["name"]
@@ -66,5 +56,11 @@ def edit_post_form_submission(request,pk):
     response = redirect('/blogapp/')
     return response
 
+def delete_post(request,pk):
+     post = Post.objects.get(pk=pk)
+     post.delete()
+    
+     response = redirect('/blogapp/')
+     return response
 
     
