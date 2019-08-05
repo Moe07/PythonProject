@@ -40,17 +40,20 @@ def add_post(request):
 def edit_post(request,pk):
     
     post = Post.objects.get(pk=pk)
+    author = Author.objects.get(post=post)
     name = request.POST["name"]
     bio = request.POST["bio"]
     title = request.POST["title"]
     description = request.POST["description"]
-    a = Author(author_name=name,author_bio=bio)
-    a.save()
+    
+    author.author_name = name
+    author.author_bio = bio
+    author.save()
     
     post.title_text=title
     post.description_text=description
     post.date_created=timezone.now()
-    post.author=a
+    post.author= author
     post.save()
     
     response = redirect('/blogapp/')
