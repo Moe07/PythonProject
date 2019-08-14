@@ -1,4 +1,4 @@
-# SmallCloudTechnology Project
+# Python Project
 
 ## Completed the practical test. 
 * List of posts is the homepage
